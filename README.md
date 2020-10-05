@@ -2,16 +2,20 @@
 
 ## users
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| nickname | string  | null: false |
-| email    | string  | null: false |
-| password | string  | null: false |
+| Column          | Type       | Options     |
+| --------------- | ---------- | ----------- |
+| nickname        | string     | null: false |
+| email           | string     | null: false |
+| password        | string     | null: false |
+| first_name      | string     | null: false |
+| last_name       | string     | null: false |
+| read_first_name | string     | null: false |
+| read_last_name  | string     | null: false |
+| birthday        | date       | null: false |
 
 ### Association
 - has_many :items
 - has_many :orders
-- has_one :profile
 
 ## items
 
@@ -34,38 +38,31 @@
 
 ## orders
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| card_number   | integer    | null: false                    |
+| month         | integer    | null: false                    |
+| year          | integer    | null: false                    |
+| security_code | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :toAddress
+- has_one :Addresses
 
-## profiles
+## Addresses
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| first_name | string     | null: false                    |
-| last_name  | string     | null: false                    |
-| birthday   | integer    | null: false                    |
-| user       | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
-
-## toAddress
-
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| zip_code      | string     | null: false                    |
-| prefecture    | string     | null: false                    |
-| city          | string     | null: false                    |
-| building_name | string     |                                |
-| phone_number  | integer    | null: false                    |
-| order         | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| zip_code       | string     | null: false                    |
+| prefecture     | integer    | null: false                    |
+| city           | string     | null: false                    |
+| address_number | string     | null: false                    |
+| building_name  | string     |                                |
+| phone_number   | string     | null: false                    |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
