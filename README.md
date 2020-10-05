@@ -19,18 +19,18 @@
 
 ## items
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| image        |            | null: false                    |
-| title        | string     | null: false                    |
-| explanation  | text       | null: false                    |
-| category     | string     | null: false                    |
-| status       | string     | null: false                    |
-| transfer_fee | string     | null: false                    |
-| from_address | string     | null: false                    |
-| delivery_day | string     | null: false                    |
-| price        | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| image           |            |                                |
+| title           | string     | null: false                    |
+| explanation     | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| status_id       | integer    | null: false                    |
+| transfer_fee_id | integer    | null: false                    |
+| from_address_id | integer    | null: false                    |
+| delivery_day_id | integer    | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -40,10 +40,6 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| card_number   | integer    | null: false                    |
-| month         | integer    | null: false                    |
-| year          | integer    | null: false                    |
-| security_code | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
 
@@ -52,12 +48,12 @@
 - belongs_to :item
 - has_one :Addresses
 
-## Addresses
+## addresses
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | zip_code       | string     | null: false                    |
-| prefecture     | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | address_number | string     | null: false                    |
 | building_name  | string     |                                |
