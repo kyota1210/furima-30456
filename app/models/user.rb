@@ -9,9 +9,9 @@ class User < ApplicationRecord
   NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
   validates_format_of :password, with: PASSWORD_REGEX
   validates           :nickname, presence: true
-  validates_format_of :first_name, presence: true, with: NAME_REGEX
-  validates_format_of :last_name, presence: true, with: NAME_REGEX
-  validates_format_of :read_first_name, presence: true, with: NAME_KANA_REGEX
-  validates_format_of :read_last_name, presence: true, with: NAME_KANA_REGEX
+  validates           :first_name, presence: true, format: {with: NAME_REGEX}
+  validates           :last_name, presence: true, format: {with: NAME_REGEX}
+  validates           :read_first_name, presence: true, format: {with: NAME_KANA_REGEX}
+  validates           :read_last_name, presence: true, format: {with: NAME_KANA_REGEX}
   validates           :birthday, presence: true
 end
