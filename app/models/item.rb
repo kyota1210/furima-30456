@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   
   PRICE_REGEX = /\A[0-9]+\z/.freeze
-
   with_options presence: true do
     validates :image
     validates :title
@@ -15,6 +14,8 @@ class Item < ApplicationRecord
   end
 
   belongs_to :user
+  has_one_attached :image
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :status 
