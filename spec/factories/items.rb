@@ -1,14 +1,13 @@
 FactoryBot.define do
   factory :item do
-    image            { Faker::Lorem.sentence }
-    title            { Faker::Lorem.sentence(word_count: 40) }
-    explanation      { Faker::Lorem.sentence(word_count: 1000) }
+    title            { Faker::Lorem.sentence }
+    explanation      { Faker::Lorem.sentence}
     category_id      { Faker::Number.between(from: 2, to: 11) }
     status_id        { Faker::Number.between(from: 2, to: 7) }
     transfer_fee_id  { Faker::Number.between(from: 2, to: 3) }
     from_address_id  { Faker::Number.between(from: 2, to: 48) }
     delivery_day_id  { Faker::Number.between(from: 2, to: 4) }
-    price            { Faker::Number.between(from: 300, to: 9_999_999) }
+    price            { Faker::Number.between(from: 3, to: 9_999_999) }
 
     association :user
 
