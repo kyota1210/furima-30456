@@ -24,7 +24,7 @@
     </div>
 
     <% if user_signed_in? %>
-      <% if user_signed_in? && current_user.id == @item.user.id %>
+      <% if current_user.id == @item.user.id %>
         <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
@@ -103,7 +103,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
