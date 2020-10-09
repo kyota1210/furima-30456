@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     title            { Faker::Lorem.sentence }
-    explanation      { Faker::Lorem.sentence}
+    explanation      { Faker::Lorem.sentence }
     category_id      { Faker::Number.between(from: 2, to: 11) }
     status_id        { Faker::Number.between(from: 2, to: 7) }
     transfer_fee_id  { Faker::Number.between(from: 2, to: 3) }
