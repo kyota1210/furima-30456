@@ -23,22 +23,22 @@ class OrdersController < ApplicationController
     end
   end
 
-
   private
+
   def order_address_params
     params.require(:order_address).permit(:token, :zip_code, :prefecture_id, :city,
-       :address_number, :building_name, :phone_number)
-       .merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+                                          :address_number, :building_name, :phone_number)
+          .merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
     @item = Item.find(params[:item_id])
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: @item.price,                   #商品の価格
-        card:   order_address_params[:token],  #カード情報
-        currency: 'jpy'
-      )
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item.price,                   # 商品の価格
+      card: order_address_params[:token],  # カード情報
+      currency: 'jpy'
+    )
   end
 
   def move_to_sign_in_page
@@ -47,8 +47,6 @@ class OrdersController < ApplicationController
 
   def move_to_top_page
     @item = Item.find(params[:item_id])
-    if (current_user.id == @item.user.id) || @item.order
-      redirect_to root_path
-    end
+    redirect_to root_path if (current_user.id == @item.user.id) || @item.order
   end
 end
