@@ -6,6 +6,8 @@ class OrderAddress
   MOBILE_REGEX = /\A\d{11}\z/.freeze
   with_options presence: true do
     validates :token
+    validates :user_id
+    validates :item_id
     validates :zip_code,      format: { with: ZIP_CODE_REGEX }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
