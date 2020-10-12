@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :item_find_params_id, only: [:show, :edit, :update]
+  before_action :move_to_top_page, only: [:edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -19,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def destroy
@@ -32,7 +33,23 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @item.update(item_params)
+    if @item.valid?
+      redirect_to action: :show
+    else
+      render action: :edit
+    end
+  end
+
   private
+
+  def item_find_params_id
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(
@@ -41,7 +58,7 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    redirect_to new_user_session_path unless user_signed_in?
+  def move_to_top_page
+    redirect_to root_path if @item.order || (current_user.id != @item.user.id)
   end
 end
