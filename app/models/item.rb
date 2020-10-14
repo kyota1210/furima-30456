@@ -14,12 +14,12 @@ class Item < ApplicationRecord
     validates :image
     validates :title
     validates :explanation
-    validates :category_id,     numericality: { other_than: 1 }
-    validates :status_id,       numericality: { other_than: 1 }
-    validates :transfer_fee_id, numericality: { other_than: 1 }
-    validates :from_address_id, numericality: { other_than: 1 }
-    validates :delivery_day_id, numericality: { other_than: 1 }
-    validates :price,           numericality: { greater_than_or_equal_to: 300, less_than: 10_000_000, message: 'out of setting range' },
-                                format: { with: PRICE_REGEX }
+    validates :category_id,     numericality: { other_than: 1, message: "が選択されていません" }
+    validates :status_id,       numericality: { other_than: 1, message: "が選択されていません" }
+    validates :transfer_fee_id, numericality: { other_than: 1, message: "が選択されていません" }
+    validates :from_address_id, numericality: { other_than: 1, message: "が選択されていません" }
+    validates :delivery_day_id, numericality: { other_than: 1, message: "が選択されていません" }
+    validates :price,           numericality: { greater_than_or_equal_to: 300, less_than: 10_000_000, message: 'は¥300~9,999,999で入力してください' },
+                                format: { with: PRICE_REGEX, message: "は半角数字で入力してください" }
   end
 end
