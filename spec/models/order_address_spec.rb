@@ -11,37 +11,37 @@ RSpec.describe OrderAddress, type: :model do
   it 'tokenが空では保存できないこと' do
     @order_address.token = ''
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("クレジットカード情報を入力してください")
+    expect(@order_address.errors.full_messages).to include('クレジットカード情報を入力してください')
   end
   it '郵便番号が空では保存できないこと' do
     @order_address.zip_code = ''
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("郵便番号を入力してください")
+    expect(@order_address.errors.full_messages).to include('郵便番号を入力してください')
   end
   it '郵便番号にハイフンが無ければ保存できないこと' do
     @order_address.zip_code = 1_234_567
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("郵便番号はハイフンを含めて入力してください")
+    expect(@order_address.errors.full_messages).to include('郵便番号はハイフンを含めて入力してください')
   end
   it '都道府県の情報が空では保存できないこと' do
     @order_address.prefecture_id = ''
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("都道府県が選択されていません")
+    expect(@order_address.errors.full_messages).to include('都道府県が選択されていません')
   end
   it '都道府県の情報で1が選択されていると保存できないこと' do
     @order_address.prefecture_id = 1
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("都道府県が選択されていません")
+    expect(@order_address.errors.full_messages).to include('都道府県が選択されていません')
   end
   it '市区町村が空では保存できないこと' do
     @order_address.city = ''
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("市区町村を入力してください")
+    expect(@order_address.errors.full_messages).to include('市区町村を入力してください')
   end
   it '番地が空では保存できないこと' do
     @order_address.address_number = ''
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("番地を入力してください")
+    expect(@order_address.errors.full_messages).to include('番地を入力してください')
   end
   it '建物名は空でも保存できること' do
     @order_address.building_name = ''
@@ -50,16 +50,16 @@ RSpec.describe OrderAddress, type: :model do
   it '電話番号が空では保存できないこと' do
     @order_address.phone_number = ''
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("電話番号を入力してください")
+    expect(@order_address.errors.full_messages).to include('電話番号を入力してください')
   end
   it '電話番号にハイフンがあると保存できないこと' do
     @order_address.phone_number = '090-1234-5678'
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("電話番号が正しく入力されていません")
+    expect(@order_address.errors.full_messages).to include('電話番号が正しく入力されていません')
   end
   it '電話番号が11桁でなければ保存できないこと' do
     @order_address.phone_number = '1234567890'
     @order_address.valid?
-    expect(@order_address.errors.full_messages).to include("電話番号が正しく入力されていません")
+    expect(@order_address.errors.full_messages).to include('電話番号が正しく入力されていません')
   end
 end

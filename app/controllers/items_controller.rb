@@ -2,9 +2,13 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :item_find_params_id, only: [:show, :edit, :update]
   before_action :move_to_top_page, only: [:edit]
+  before_action :search_item, only: [:index, :search, :show]
 
   def index
     @items = Item.all.order('created_at DESC')
+  end
+
+  def search
   end
 
   def new

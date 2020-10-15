@@ -11,10 +11,10 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX
   with_options presence: true do
     validates           :nickname
-    validates           :first_name, format: { with: NAME_REGEX, message: "は全角（漢字・ひらがな・カタカナ）で入力してください" }
-    validates           :last_name, format: { with: NAME_REGEX, message: "は全角（漢字・ひらがな・カタカナ）で入力してください" }
-    validates           :read_first_name, format: { with: NAME_KANA_REGEX, message: "は全角（カタカナ）で入力してください" }
-    validates           :read_last_name, format: { with: NAME_KANA_REGEX, message: "は全角（カタカナ）で入力してください" }
+    validates           :first_name, format: { with: NAME_REGEX, message: 'は全角（漢字・ひらがな・カタカナ）で入力してください' }
+    validates           :last_name, format: { with: NAME_REGEX, message: 'は全角（漢字・ひらがな・カタカナ）で入力してください' }
+    validates           :read_first_name, format: { with: NAME_KANA_REGEX, message: 'は全角（カタカナ）で入力してください' }
+    validates           :read_last_name, format: { with: NAME_KANA_REGEX, message: 'は全角（カタカナ）で入力してください' }
     validates           :birthday
   end
 

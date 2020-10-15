@@ -8,11 +8,11 @@ class OrderAddress
     validates :token
     validates :user_id
     validates :item_id
-    validates :zip_code,      format: { with: ZIP_CODE_REGEX, message: "はハイフンを含めて入力してください" }
-    validates :prefecture_id, numericality: { other_than: 1, message: "が選択されていません" }
+    validates :zip_code,      format: { with: ZIP_CODE_REGEX, message: 'はハイフンを含めて入力してください' }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'が選択されていません' }
     validates :city
     validates :address_number
-    validates :phone_number, format: { with: MOBILE_REGEX, message: "が正しく入力されていません" }
+    validates :phone_number, format: { with: MOBILE_REGEX, message: 'が正しく入力されていません' }
   end
 
   def save

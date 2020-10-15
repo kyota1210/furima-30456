@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :config_permitted_parameters, if: :devise_controller?
 
+  def search_item
+    @p = Item.ransack(params[:q])
+    @results = @p.result
+  end
+
   private
 
   def basic_auth
